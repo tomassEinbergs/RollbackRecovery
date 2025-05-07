@@ -5,32 +5,44 @@
 :- consult('main.pl').
 
 run_test :-
-	reset_sistema,
+    reset_sistema,
     cargar_entrada('entrada.txt'),
-    writeln('--- Estado inicial ---'), mostrar_estado,
+    writeln('\n=== ESTADO INICIAL DEL SISTEMA ==='),
+    mostrar_estado,
 
-    % Crear un checkpoint en p1
+    % 1. Crea un checkpoint en p1
     check(p1, ID),
-    format('Checkpoint creado en p1: ~w~n', [ID]),
-	writeln('--- Despues del checkpoint ---'), mostrar_estado,
-    
-    % Enviar mensaje de p1 a p2
+    format('\n-> Checkpoint creado en p1 con ID: ~w~n', [ID]),
+    writeln('Estado tras crear el checkpoint en p1:'),
+    mostrar_estado,
+
+    % 2. p1 envía un mensaje a p2
     enviar(p1, p2, hola, mundo),
-    writeln('--- Despues de enviar ---'), mostrar_estado,
+    writeln('\n-> Mensaje {hola, mundo} enviado de p1 a p2'),
+    writeln('Estado tras el envio:'),
+    mostrar_estado,
 
-    % Recibir mensaje en p2
+    % 3. p2 recibe el mensaje
     recibir(p2, hola),
-    writeln('--- Despues de recibir ---'), mostrar_estado,
+    writeln('\n-> p2 ha recibido el mensaje {hola, mundo}'),
+    writeln('Estado tras la recepcion:'),
+    mostrar_estado,
 
-    % Ejecutar rollback en p1
+    % 4. Ejecuta rollback en p1
     rollback(p1, ID),
-    writeln('--- Despues de rollback ---'), mostrar_estado,
-	
-	% Crear un nuevo proceso hijo desde p1
-    spawn(p1, estado_inicial_hijo, NuevoPid),
-    format('--- Proceso ~w creado con spawn desde p1 ---~n', [NuevoPid]),
-	writeln('--- Despues del spawn ---'),	mostrar_estado.
+    format('\n-> Rollback ejecutado en p1 al checkpoint ~w~n', [ID]),
+    writeln('Estado tras el rollback de p1:'),
+    mostrar_estado,
 
+    % 5. Crea un nuevo proceso desde p1 con spawn
+    spawn(p1, estado_inicial_hijo, NuevoPid),
+    format('\n-> Proceso ~w creado mediante spawn desde p1~n', [NuevoPid]),
+    writeln('Estado tras crear el nuevo proceso:'),
+    mostrar_estado.
+
+% --------------------------------------
+% Limpieza del sistema entre ejecuciones
+% --------------------------------------
 
 reset_sistema :-
     retractall(proceso(_, _, _)),
