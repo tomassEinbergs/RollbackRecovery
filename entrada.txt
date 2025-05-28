@@ -1,4 +1,0 @@
-
-% Estado inicial de dos procesos
-proceso(p1, s0, []).
-proceso(p2, s0, []).
