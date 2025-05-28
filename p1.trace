@@ -1,0 +1,7 @@
+{send, p2, hola}.
+{receive, ok}.
+{check, tau1}.
+{send, p2, mundo}.
+{receive, ok2}.
+{commit, tau1}.
+
