@@ -4,15 +4,23 @@ Implementación de un esquema de recuperación de fallos para un lenguaje concur
 
 ### Ficheros
 
-* parser.pl - para leer las trazas
-* constructor.pl - constructor del estado inicial
-* eval.pl - reglas de ejecución
-* exec.pl - ejecución de eval y mostrar el estado del sistema
-* main.pl
-* p1.trace y p2.trace - ejemplos de trazas
+/src
+* mains.js
+* fileParser.js - parser para leer las trazas
+* executor.js - ejecutor de sistema que implementa la lógica de Rollback Recovery
+* style.css
+
+/traces
+* p1.txt
+* p2.txt
+* p3.txt
+* p4.txt
 
 ### Ejecución
 
 * Guardar los ficheros en un directorio
-* Compilar main.pl
-* Ejecutar main(['p1.trace', 'p2.trace']).
+* Tener nodejs instalado -> https://nodejs.org/en/download
+* Abrir el Terminal (Símbolo del sistema) y navegar a la carpeta que contiene los ficheros
+* Ejecutar npm install
+* Ejecutar npm run dev
+* Navegar a localhost
