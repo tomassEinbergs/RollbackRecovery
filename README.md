@@ -18,7 +18,7 @@ Implementación de un esquema de recuperación de fallos para un lenguaje concur
 
 ### Ejecución
 
-* Guardar los ficheros en un directorio
+* Guardar las carpetas/ficheros en un directorio
 * Tener nodejs instalado -> https://nodejs.org/en/download
 * Abrir el Terminal (Símbolo del sistema) y navegar a la carpeta que contiene los ficheros
 * Ejecutar npm install
