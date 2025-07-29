@@ -1,0 +1,7 @@
+{spawn, p3}
+{check, tau1}
+{spawn, p2}
+{receive, rollback}
+{rollback, tau1}
+
+

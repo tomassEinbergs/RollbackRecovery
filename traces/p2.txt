@@ -1,0 +1,2 @@
+{send, p3, hola}
+{receive, mundo}

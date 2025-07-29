@@ -1,0 +1,2 @@
+{check, tau1}
+{send, p1, test}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rollback Recovery</title>
+    <link rel="stylesheet" href="src/style.css">
+  </head>
+  <body>
+    <div id="app">
+      <header class="header">
+        <h1>Esquema de recuperación de fallos para un lenguaje concurrente</h1>
+        <p>Visualización interactiva de la ejecución de sistemas concurrentes y distribuidos con recuperación por rollback</p>
+      </header>
+
+      <div class="controls">
+        <button id="loadBtn" class="btn btn-primary">Cargar Estado del Sistema</button>
+        <button id="stepBtn" class="btn btn-secondary" disabled>Siguiente Paso</button>
+        <button id="resetBtn" class="btn btn-outline">Reiniciar</button>
+        <div class="step-info">
+          <span id="stepCounter">Paso: 0</span>
+        </div>
+      </div>
+
+      <div class="main-content">
+        <div class="processes-section">
+          <h2>Procesos</h2>
+          <div id="processesContainer" class="processes-grid">
+            <!-- Los procesos se renderizarán aquí -->
+          </div>
+        </div>
+
+        <div class="messages-section">
+          <h2>Mensajes en Tránsito</h2>
+          <div id="messagesContainer" class="messages-list">
+            <!-- Los mensajes se renderizarán aquí -->
+          </div>
+        </div>
+
+        <div class="execution-log">
+          <h2>Registro de Ejecución</h2>
+          <div id="logContainer" class="log-content">
+            <!-- Los pasos de ejecución se registrarán aquí -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="src/fileParser.js"></script>
+    <script src="src/executor.js"></script>
+    <script src="src/main.js"></script>
+  </body>
+</html>

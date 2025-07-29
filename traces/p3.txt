@@ -1,0 +1,6 @@
+{check, tau1}
+{spawn, p4}
+{check, tau2}
+{receive, hola}
+{send, p2, mundo}
+{send, p1, rollback}
