@@ -106,9 +106,8 @@ body {
 .main-content {
   flex: 1;
   padding: 2rem;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: 1fr 300px;
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
   max-width: 1400px;
   margin: 0 auto;
@@ -116,18 +115,15 @@ body {
 }
 
 .processes-section {
-  grid-column: 1;
-  grid-row: 1;
+  flex: 1;
 }
 
 .messages-section {
-  grid-column: 2;
-  grid-row: 1;
+  flex: 0 0 auto;
 }
 
 .execution-log {
-  grid-column: 1 / -1;
-  grid-row: 2;
+  flex: 0 0 300px;
 }
 
 .processes-section h2,
@@ -141,16 +137,17 @@ body {
 
 .processes-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
 }
 
 .process-card {
   background: white;
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 1rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
+  min-width: 0; /* Permite que las tarjetas se encojan */
 }
 
 .process-card:hover {
@@ -161,13 +158,13 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
   border-bottom: 2px solid #f7fafc;
 }
 
 .process-id {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: #2d3748;
 }
@@ -175,14 +172,14 @@ body {
 .process-state {
   background: #4299e1;
   color: white;
-  padding: 0.25rem 0.75rem;
+  padding: 0.2rem 0.6rem;
   border-radius: 20px;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 600;
 }
 
 .process-section {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .process-section:last-child {
@@ -191,27 +188,28 @@ body {
 
 .process-section h4 {
   color: #4a5568;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .history-list,
 .queue-list {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 
 .history-item,
 .queue-item {
-  padding: 0.5rem 0.75rem;
+  padding: 0.4rem 0.6rem;
   border-radius: 6px;
   font-family: 'Monaco', 'Menlo', monospace;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   border-left: 3px solid;
+  word-break: break-all; /* Permite que el texto se ajuste */
 }
 
 .action-send {
@@ -264,8 +262,10 @@ body {
 
 .messages-list {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 1rem;
+  justify-content: flex-start;
 }
 
 .message-card {
@@ -274,6 +274,9 @@ body {
   padding: 1.5rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
+  flex: 0 0 auto;
+  min-width: 200px;
+  max-width: 300px;
 }
 
 .message-card:hover {
@@ -322,6 +325,7 @@ body {
   color: #718096;
   font-style: italic;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
 
 .no-processes {
@@ -376,26 +380,16 @@ body {
   color: #fc8181;
 }
 
-/* Diseño responsive */
-@media (max-width: 1024px) {
-  .main-content {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
+/* Responsive design */
+@media (max-width: 1200px) {
+  .processes-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
-  
-  .processes-section {
-    grid-column: 1;
-    grid-row: 1;
-  }
-  
-  .messages-section {
-    grid-column: 1;
-    grid-row: 2;
-  }
-  
-  .execution-log {
-    grid-column: 1;
-    grid-row: 3;
+}
+
+@media (max-width: 900px) {
+  .processes-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -411,5 +405,9 @@ body {
   
   .processes-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .messages-list {
+    flex-direction: column;
   }
 }
